@@ -1,0 +1,39 @@
+<h4>In this page you can search univers</h4>
+<div class="row g-3">
+    <div class="col-6">
+        <label for="univerTitle" class="visually-hidden">Title</label>
+        <input type="text" class="form-control" id="univerTitle" placeholder="Title" [(ngModel)]="title">
+    </div>
+    <div class="col-6">
+        <label for="univerCounrty" class="visually-hidden">country</label>
+        <input type="text" class="form-control" id="univerCounrty" placeholder="Country" [(ngModel)]="country">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3" (click)="searchByName()">Search by name</button>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3" (click)="searchByNameAndCountry()">Search by name and
+            country</button>
+    </div>
+
+</div>
+<hr>
+<div class="row g-3">
+    <div class="col-6" *ngFor="let u of universities">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://logo.clearbit.com/{{u.web_pages}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{u.name | uppercase}}</h5>
+                        <p class="card-text">{{u.country}}</p>
+                        <p class="card-text"><small class="text-muted">{{u.alpha_two_code}}</small></p>
+                        <a [routerLink]="['/allUnivers', u.name]" class="btn btn-primary">Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
